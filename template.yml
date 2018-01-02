@@ -25,6 +25,9 @@ Metadata:
         default: "CIDR for Public Subnet 1"
 
 Parameters:
+  ProjectId:
+    Type: String
+    Description: AWS CodeStar projectID used to associate new resources to team members
   pVpcName:
     Description: "Name of the VPC"
     Type: "String"
