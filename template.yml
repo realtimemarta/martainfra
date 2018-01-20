@@ -101,6 +101,42 @@ Resources:
           Key: "Name"
           Value: "marta-public-routetable"
 
+  S3Endpoint:
+    Type: "AWS::EC2::VPCEndpoint"
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action: "*"
+            Effect: "Allow"
+            Resource: "*"
+            Principal: "*"
+      RouteTableIds:
+        - !Ref "marta-private-routetable"
+      ServiceName: !Join 
+      - ''
+      - - com.amazonaws.
+        - !Ref 'AWS::Region'
+        - .s3
+      VpcId: !ImportValue "marta-vpc"
+
+  DynamoDBEndpoint:
+    Type: "AWS::EC2::VPCEndpoint"
+    Properties:
+      PolicyDocument:
+        Statement:
+          - Action: "*"
+            Effect: "Allow"
+            Resource: "*"
+            Principal: "*"
+      RouteTableIds:
+        - !Ref "marta-private-routetable"
+      ServiceName: !Join 
+      - ''
+      - - com.amazonaws.
+        - !Ref 'AWS::Region'
+        - .dynamodb
+      VpcId: !ImportValue "marta-vpc"
+
   IGW:
     Type: "AWS::EC2::InternetGateway"
     Properties:
