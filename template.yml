@@ -117,7 +117,7 @@ Resources:
       - - com.amazonaws.
         - !Ref 'AWS::Region'
         - .s3
-      VpcId: !ImportValue "marta-vpc"
+      VpcId: !Ref "marta-vpc"
 
   DynamoDBEndpoint:
     Type: "AWS::EC2::VPCEndpoint"
@@ -135,7 +135,7 @@ Resources:
       - - com.amazonaws.
         - !Ref 'AWS::Region'
         - .dynamodb
-      VpcId: !ImportValue "marta-vpc"
+      VpcId: !Ref "marta-vpc"
 
   IGW:
     Type: "AWS::EC2::InternetGateway"
