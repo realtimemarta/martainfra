@@ -111,13 +111,13 @@ Resources:
             Resource: "*"
             Principal: "*"
       RouteTableIds:
-        - !Ref "marta-private-routetable"
+        - !Ref PrivateRouteTable
       ServiceName: !Join 
       - ''
       - - com.amazonaws.
         - !Ref 'AWS::Region'
         - .s3
-      VpcId: !Ref "marta-vpc"
+      VpcId: !Ref VPC
 
   DynamoDBEndpoint:
     Type: "AWS::EC2::VPCEndpoint"
@@ -129,13 +129,13 @@ Resources:
             Resource: "*"
             Principal: "*"
       RouteTableIds:
-        - !Ref "marta-private-routetable"
+        - !Ref PrivateRouteTable
       ServiceName: !Join 
       - ''
       - - com.amazonaws.
         - !Ref 'AWS::Region'
         - .dynamodb
-      VpcId: !Ref "marta-vpc"
+      VpcId: !Ref VPC
 
   IGW:
     Type: "AWS::EC2::InternetGateway"
